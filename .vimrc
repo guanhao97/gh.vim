@@ -4,10 +4,10 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
+" Alternatively, pass a path where Vundle should install plugins
+" Call vundle#begin('~/some/path/here')
  
-" " let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 :set runtimepath=/home/guanhao97/.vim,$VIMRUNTIME
@@ -18,9 +18,9 @@ set smartindent
 
 set nu  " Turn on line numbering. Turn it off with 'set nonu' 
 set showcmd  " Show (partial) command in status line.
-set colorcolumn=80  "Set the ruler to 80 columns"
-set ignorecase  "Ignore case in search patterns"
-set scrolloff=3  "Keep at least 3 lines above/below"
+set colorcolumn=80  " Set the ruler to 80 columns
+set ignorecase  " Ignore case in search patterns
+set scrolloff=3  " Keep at least 3 lines above/below"
 syntax on  " Set syntax on
 set ic  " Case insensitive search
 set hls  " Higlhight search
@@ -49,3 +49,4 @@ noremap   <Right>  <NOP>
 
 call vundle#end()
 filetype plugin indent on
+
