@@ -12,32 +12,32 @@ Plugin 'gmarik/Vundle.vim'
 
 :set runtimepath=/home/guanhao97/.vim,$VIMRUNTIME
 
-" Turn on line numbering. Turn it off with "set nonu" 
-set nu 
+" Indent settings set tabstop=4
+set shiftwidth=4
+set smartindent
 
-" Set syntax on
-syntax on
+set nu  " Turn on line numbering. Turn it off with 'set nonu' 
+set showcmd  " Show (partial) command in status line.
+set colorcolumn=80  "Set the ruler to 80 columns"
+set ignorecase  "Ignore case in search patterns"
+set scrolloff=3  "Keep at least 3 lines above/below"
+syntax on  " Set syntax on
+set ic  " Case insensitive search
+set hls  " Higlhight search
+set lbr  " Wrap text instead of being on one line
 
-" Indent automatically depending on filetype
-filetype indent on
-set autoindent
-
-" Case insensitive search
-set ic
-
-" Higlhight search
-set hls
-
-" Wrap text instead of being on one line
-set lbr
-
+" Appearance
+if has('gui_running')
+  set guifont=Consolas\ 12
+endif
+" Color settings
 set t_Co=256
 colorscheme molokai
 set background=dark
 
 " The following are my custom keymappings
 " Disabling arrow keys for training
-" Replacing Esc with Caps-Lock for productivity
+" Replaced Caps-Lock with Escape on OS level
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
