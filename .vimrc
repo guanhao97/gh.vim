@@ -1,17 +1,18 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" .##.....##.##....##....##.....##.####.##.....##.########...######.  
-"" .###...###..##..##.....##.....##..##..###...###.##.....##.##....##
-"" .####.####...####......##.....##..##..####.####.##.....##.##......
-"" .##.###.##....##.......##.....##..##..##.###.##.########..##......
-"" .##.....##....##........##...##...##..##.....##.##...##...##......
-"" .##.....##....##.........##.##....##..##.....##.##....##..##....##
-"" .##.....##....##..........###....####.##.....##.##.....##..######.
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ "                                                                     "
+ " .##.....##.##....##....##.....##.####.##.....##.########...######.  " 
+ " .###...###..##..##.....##.....##..##..###...###.##.....##.##....##  "
+ " .####.####...####......##.....##..##..####.####.##.....##.##......  "
+ " .##.###.##....##.......##.....##..##..##.###.##.########..##......  " 
+ " .##.....##....##........##...##...##..##.....##.##...##...##......  "
+ " .##.....##....##.........##.##....##..##.....##.##....##..##....##  "
+ " .##.....##....##..........###....####.##.....##.##.....##..######.  "
+ "                                                                     "
+ """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""" Compulsory Vundle code
 set nocompatible  " be iMproved, required
 filetype off  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -27,17 +28,26 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mbadran/headlights'
 Plugin 'tpope/vim-fugitive'
 
+"""""" STARTUP SETTINGS
+" .vimrc reload
+autocmd! bufwritepost .vimrc source %
+
+" NERDTree Settings
+autocmd VimEnter * NERDTree  " Open on startup
+autocmd VimEnter * wincmd w  " Move focus away from NERDTree
+let NERDTreeShowBookmarks=1  " Show bookmarks on startup
+
 """""" MISC. SETTINGS
 " Indent settings set tabstop=4
-set shiftwidth=4
-set smartindent
+set tabstop=4
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 set nu  " Turn on line numbering. Turn it off with 'set nonu' 
 set showcmd  " Show (partial) command in status line.
-set colorcolumn=100  " Set the ruler to 80 columns
+set colorcolumn=80  " Set the ruler to 80 columns
+highlight ColorColumn guibg=Black
 set ignorecase  " Ignore case in search patterns
 set scrolloff=3  " Keep at least 3 lines above/below"
 syntax on  " Set syntax on
@@ -86,9 +96,6 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-
-" Replaced Caps-Lock with Escape on OS level
-:!xmodmap /~/.Xmodmap
 
 """""" NECESSARY ENDING VUNDLE CODE
 call vundle#end()
