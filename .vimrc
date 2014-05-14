@@ -1,6 +1,16 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" .##.....##.##....##....##.....##.####.##.....##.########...######.  
+"" .###...###..##..##.....##.....##..##..###...###.##.....##.##....##
+"" .####.####...####......##.....##..##..####.####.##.....##.##......
+"" .##.###.##....##.......##.....##..##..##.###.##.########..##......
+"" .##.....##....##........##...##...##..##.....##.##...##...##......
+"" .##.....##....##.........##.##....##..##.....##.##....##..##....##
+"" .##.....##....##..........###....####.##.....##.##.....##..######.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""" Compulsory Vundle code
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible  " be iMproved, required
+filetype off  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -9,18 +19,21 @@ call vundle#begin()
 " Call vundle#begin('~/some/path/here')
 set runtimepath=/home/guanhao97/.vim,$VIMRUNTIME
 
-"""""" BundleS
+"""""" PLUGINS
 " Let Vundle manage Vundle, required
-Bundle 'gmarik/Vundle.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mbadran/headlights'
-Bundle 'tpope/vim-fugitive'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mbadran/headlights'
+Plugin 'tpope/vim-fugitive'
 
 """""" MISC. SETTINGS
 " Indent settings set tabstop=4
 set shiftwidth=4
 set smartindent
+
+" <Ctrl-l> redraws the screen and removes any search highlighting.
+nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 set nu  " Turn on line numbering. Turn it off with 'set nonu' 
 set showcmd  " Show (partial) command in status line.
@@ -65,7 +78,6 @@ set background=dark
 """""" KEYMAP SETTINGS
 " The following are my custom keymappings
 " Disabling arrow keys for training
-" Replaced Caps-Lock with Escape on OS level
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -74,6 +86,9 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+
+" Replaced Caps-Lock with Escape on OS level
+:!xmodmap /~/.Xmodmap
 
 """""" NECESSARY ENDING VUNDLE CODE
 call vundle#end()
