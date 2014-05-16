@@ -1,3 +1,4 @@
+
  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  "                                                                     "
  " .##.....##.##....##....##.....##.####.##.....##.########...######.  " 
@@ -7,11 +8,12 @@
  " .##.....##....##........##...##...##..##.....##.##...##...##......  "
  " .##.....##....##.........##.##....##..##.....##.##....##..##....##  "
  " .##.....##....##..........###....####.##.....##.##.....##..######.  "
- "                                                                     "
+ "                                                                     "   
+ " By Chan Guan Hao                                                    "
  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
-" => COMPULSORY VUNDLE CODE & RUNTIME PATHS
+" => START CODE & RUNTIME PATHS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible  " be iMproved, required
 filetype off  " required
@@ -38,16 +40,16 @@ Plugin 'szw/vim-g'
 Plugin 'matchit'
 Plugin 'Yggdroot/indentLine'
 Plugin 'maxbrunsfeld/vim-yankstack'
+Plugin 'wesQ3/vim-windowswap'
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => PLUGINS SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
-""""" PLUGIN SETTINGS
-" Continue session from saved session file
-source /$HOME/Session.vim
-
-NERDTree Settings
+" NERDTree Settings
 let NERDTreeShowBookmarks=1  " Show bookmarks on startup
+
+" Windowswap Settings
+let g:windowswap_map_keys=0  " Prevent default bindings
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => MISCELLANEOUS SETTINGS
@@ -60,7 +62,6 @@ set shiftwidth=4
 set textwidth=80
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
-nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 set showcmd  " Show (partial) command in status line.
 set ignorecase  " Ignore case in search patterns
@@ -73,7 +74,7 @@ set lbr  " Wrap text instead of being on one line
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => APPEARANCE
 """"""""""""""""""""""""""""""""""""""""""""""""""
-set nu  " Turn on line numbering. Turn it off with 'set nonu' 
+set nu  " Turn on line numbering 
 
 " Set font
 if has('gui_running')
@@ -96,8 +97,10 @@ else
 endif
 
 " Remove toolbar
+set guioptions-=m  " remove menubar
 set guioptions-=T  " remove toolbar
 set guioptions-=L  " remove left-hand scroll bar
+set guioptions-=r  " remove left-hand scroll bar
 
 " Color settings
 set t_Co=256
@@ -107,24 +110,35 @@ set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => KEYMAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""
-" The following are my custom keymappings
+" Insert Mode
 " Disabling arrow keys for training
-inoremap  <Up>           <NOP>
-inoremap  <Down>         <NOP>
-inoremap  <Left>         <NOP>
-inoremap  <Right>        <NOP>
-noremap   <Up>           <NOP>
-noremap   <Down>         <NOP>
-noremap   <Left>         <NOP>
-noremap   <Right>        <NOP>
-nmap      <S-Enter> O    <Esc>j
-nmap      <CR>           o<Esc>k
-noremap   <F1>           :Obsession<CR>
-noremap   <F2>           :NERDTreeToggle<CR>
+inoremap  <Up>                <NOP>
+inoremap  <Down>              <NOP>
+inoremap  <Left>              <NOP>
+inoremap  <Right>             <NOP>
+
+" Normal Mode
+noremap   <Up>                <NOP>
+noremap   <Down>              <NOP>
+noremap   <Left>              <NOP>
+noremap   <Right>             <NOP>
+nnoremap  <S-Enter>           O<Esc>
+nnoremap  <CR>                o<Esc>
+noremap   <C-s>               <C-w>=
+nnoremap  =                   :winc =<CR>
+noremap   <F1>                :NERDTreeToggle<CR>
+nnoremap  <F2>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
+nnoremap  <C-l>               :nohl<CR><C-l>
+nnoremap  <Leader>yw          call WindowSwap#MarkWindowSwap()<CR>
+nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
-" => VUNDLE END CODE
+" => END CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""
+source /$HOME/Session.vim
 call vundle#end()
 filetype plugin indent on
+autocmd VimEnter * winc =  " Equalizes the window sizes
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
