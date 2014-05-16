@@ -10,7 +10,9 @@
  "                                                                     "
  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""" Compulsory Vundle code
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => COMPULSORY VUNDLE CODE & RUNTIME PATHS
+""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible  " be iMproved, required
 filetype off  " required
 " set the runtime path to include Vundle and initialize
@@ -20,34 +22,47 @@ call vundle#begin()
 " Call vundle#begin('~/some/path/here')
 set runtimepath=/home/guanhao97/.vim,$VIMRUNTIME
 
-"""""" PLUGINS
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " Let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mbadran/headlights'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-obsession'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'szw/vim-g'
+Plugin 'matchit'
+Plugin 'Yggdroot/indentLine'
+Plugin 'maxbrunsfeld/vim-yankstack'
 
-"""""" STARTUP SETTINGS
-" .vimrc reload
-autocmd! bufwritepost .vimrc source %
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => PLUGINS SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""
+""""" PLUGIN SETTINGS
+" Continue session from saved session file
+source /$HOME/Session.vim
 
-" NERDTree Settings
-autocmd VimEnter * NERDTree  " Open on startup
-autocmd VimEnter * wincmd w  " Move focus away from NERDTree
+NERDTree Settings
 let NERDTreeShowBookmarks=1  " Show bookmarks on startup
 
-"""""" MISC. SETTINGS
-" Indent settings set tabstop=4
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => MISCELLANEOUS SETTINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabs Settings
 set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set textwidth=80
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
-set nu  " Turn on line numbering. Turn it off with 'set nonu' 
 set showcmd  " Show (partial) command in status line.
-set colorcolumn=80  " Set the ruler to 80 columns
-highlight ColorColumn guibg=Black
 set ignorecase  " Ignore case in search patterns
 set scrolloff=3  " Keep at least 3 lines above/below"
 syntax on  " Set syntax on
@@ -55,7 +70,11 @@ set ic  " Case insensitive search
 set hls  " Higlhight search
 set lbr  " Wrap text instead of being on one line
 
-""""""" APPEARANCE SETTINGS
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => APPEARANCE
+""""""""""""""""""""""""""""""""""""""""""""""""""
+set nu  " Turn on line numbering. Turn it off with 'set nonu' 
+
 " Set font
 if has('gui_running')
   set guifont=Consolas\ 12
@@ -77,27 +96,35 @@ else
 endif
 
 " Remove toolbar
-:set guioptions-=T  " remove toolbar
-:set guioptions-=L  " remove left-hand scroll bar
+set guioptions-=T  " remove toolbar
+set guioptions-=L  " remove left-hand scroll bar
 
 " Color settings
 set t_Co=256
 colorscheme molokai
 set background=dark
 
-"""""" KEYMAP SETTINGS
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => KEYMAPS
+""""""""""""""""""""""""""""""""""""""""""""""""""
 " The following are my custom keymappings
 " Disabling arrow keys for training
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <NOP>
-noremap   <Down>   <NOP>
-noremap   <Left>   <NOP>
-noremap   <Right>  <NOP>
+inoremap  <Up>           <NOP>
+inoremap  <Down>         <NOP>
+inoremap  <Left>         <NOP>
+inoremap  <Right>        <NOP>
+noremap   <Up>           <NOP>
+noremap   <Down>         <NOP>
+noremap   <Left>         <NOP>
+noremap   <Right>        <NOP>
+nmap      <S-Enter> O    <Esc>j
+nmap      <CR>           o<Esc>k
+noremap   <F1>           :Obsession<CR>
+noremap   <F2>           :NERDTreeToggle<CR>
 
-"""""" NECESSARY ENDING VUNDLE CODE
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
+" => VUNDLE END CODE
+""""""""""""""""""""""""""""""""""""""""""""""""""
 call vundle#end()
 filetype plugin indent on
 
