@@ -37,10 +37,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'szw/vim-g'
-Plugin 'matchit'
-Plugin 'Yggdroot/indentLine'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'Yggdroot/indentLine'
+Plugin 'matchit'
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => PLUGINS SETTINGS
@@ -56,8 +56,8 @@ let g:windowswap_map_keys=0  " Prevent default bindings
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs Settings
 set tabstop=4
-set softtabstop=4
 set expandtab
+set softtabstop=4
 set shiftwidth=4
 set textwidth=80
 
@@ -104,8 +104,7 @@ set guioptions-=r  " remove left-hand scroll bar
 
 " Color settings
 set t_Co=256
-colorscheme molokai
-set background=dark
+colorscheme vividchalk
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => KEYMAPS
@@ -124,8 +123,10 @@ noremap   <Left>              <NOP>
 noremap   <Right>             <NOP>
 nnoremap  <S-Enter>           O<Esc>
 nnoremap  <CR>                o<Esc>
-noremap   <C-s>               <C-w>=
-nnoremap  =                   :winc =<CR>
+noremap   <C-s>               :w<CR>
+noremap   <C-n>               :vnew<CR>
+nnoremap  <C-v>               "*p
+nnoremap  =                   <C-w>=
 noremap   <F1>                :NERDTreeToggle<CR>
 nnoremap  <F2>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
 nnoremap  <C-l>               :nohl<CR><C-l>
@@ -135,7 +136,7 @@ nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => END CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""
-source /$HOME/Session.vim
+source /$HOME/Session.vim  " Initialize previous session
 call vundle#end()
 filetype plugin indent on
 autocmd VimEnter * winc =  " Equalizes the window sizes
