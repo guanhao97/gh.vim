@@ -23,6 +23,12 @@ call vundle#begin()
 " Alternatively, pass a path where Vundle should install Bundles
 " Call vundle#begin('~/some/path/here')
 set runtimepath=/home/guanhao97/.vim,$VIMRUNTIME
+set backupdir=/$HOME/tmp
+
+" Set no backup
+set nobackup       
+set nowritebackup
+set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => PLUGINS
@@ -39,8 +45,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'szw/vim-g'
 Plugin 'maxbrunsfeld/vim-yankstack'
 Plugin 'wesQ3/vim-windowswap'
-Plugin 'Yggdroot/indentLine'
 Plugin 'matchit'
+Plugin 'Raimondi/delimitMate'
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => PLUGINS SETTINGS
@@ -51,15 +57,18 @@ let NERDTreeShowBookmarks=1  " Show bookmarks on startup
 " Windowswap Settings
 let g:windowswap_map_keys=0  " Prevent default bindings
 
+" CTRL-p Settings
+let g:ctrlp_open_new_file = 'v'
+
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => MISCELLANEOUS SETTINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Tabs Settings
+set softtabstop=4
 set tabstop=4
 set expandtab
-set softtabstop=4
 set shiftwidth=4
-set textwidth=80
+set autoindent
 
 " <Ctrl-l> redraws the screen and removes any search highlighting.
 
@@ -70,6 +79,7 @@ syntax on  " Set syntax on
 set ic  " Case insensitive search
 set hls  " Higlhight search
 set lbr  " Wrap text instead of being on one line
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => APPEARANCE
@@ -105,6 +115,7 @@ set guioptions-=r  " remove left-hand scroll bar
 " Color settings
 set t_Co=256
 colorscheme vividchalk
+highlight NonText ctermfg=bg guifg=bg
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => KEYMAPS
@@ -117,21 +128,27 @@ inoremap  <Left>              <NOP>
 inoremap  <Right>             <NOP>
 
 " Normal Mode
-noremap   <Up>                <NOP>
+nnoremap  <S-Enter>           O<Esc>
+nnoremap  <CR>                o<Esc>
+nnoremap  <C-z>               "*p
+nnoremap  =                   <C-w>=
+nnoremap  <C-l>               :nohl<CR><C-l>
+nnoremap   <C-s>               :w<CR>   
+nnoremap  <Leader>yw          call WindowSwap#MarkWindowSwap()<CR>
+nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
+
+" All modes
+noremap   <Up>                <NOP> 
 noremap   <Down>              <NOP>
 noremap   <Left>              <NOP>
 noremap   <Right>             <NOP>
-nnoremap  <S-Enter>           O<Esc>
-nnoremap  <CR>                o<Esc>
-noremap   <C-s>               :w<CR>
 noremap   <C-n>               :vnew<CR>
-nnoremap  <C-v>               "*p
-nnoremap  =                   <C-w>=
-noremap   <F1>                :NERDTreeToggle<CR>
-nnoremap  <F2>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
-nnoremap  <C-l>               :nohl<CR><C-l>
-nnoremap  <Leader>yw          call WindowSwap#MarkWindowSwap()<CR>
-nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
+noremap   <C-N>               :new<CR>
+noremap   <C-a>               ggvG
+noremap   <F1>                :NERDTreeToggle<CR>              
+noremap   <F2>                :vnew /$HOME/.vimrc<CR>
+noremap   <F3>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => END CODE
