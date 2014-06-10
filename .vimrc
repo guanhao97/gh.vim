@@ -30,6 +30,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" Avoid welcome message
+set shortmess+=I
+
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => PLUGINS
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -40,11 +43,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-obsession'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'szw/vim-g'
 Plugin 'maxbrunsfeld/vim-yankstack'
-Plugin 'wesQ3/vim-windowswap'
 Plugin 'matchit'
 Plugin 'Raimondi/delimitMate'
 
@@ -80,6 +81,8 @@ set ic  " Case insensitive search
 set hls  " Higlhight search
 set lbr  " Wrap text instead of being on one line
 
+" Directory management
+set autochdir
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => APPEARANCE
@@ -114,7 +117,7 @@ set guioptions-=r  " remove left-hand scroll bar
 
 " Color settings
 set t_Co=256
-colorscheme vividchalk
+colorscheme molokai
 highlight NonText ctermfg=bg guifg=bg
 
 """""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -133,7 +136,7 @@ nnoremap  <CR>                o<Esc>
 nnoremap  <C-z>               "*p
 nnoremap  =                   <C-w>=
 nnoremap  <C-l>               :nohl<CR><C-l>
-nnoremap   <C-s>               :w<CR>   
+nnoremap   <C-s>               :w<CR><C-s>   
 nnoremap  <Leader>yw          call WindowSwap#MarkWindowSwap()<CR>
 nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
 
@@ -145,7 +148,7 @@ noremap   <Right>             <NOP>
 noremap   <C-n>               :vnew<CR>
 noremap   <C-N>               :new<CR>
 noremap   <C-a>               ggvG
-noremap   <F1>                :NERDTreeToggle<CR>              
+noremap   <F1>                :NERDTreeToggle /home/guanhao97/Desktop/chem-mystery<CR>              
 noremap   <F2>                :vnew /$HOME/.vimrc<CR>
 noremap   <F3>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
 
@@ -153,7 +156,6 @@ noremap   <F3>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""" 
 " => END CODE
 """"""""""""""""""""""""""""""""""""""""""""""""""
-source /$HOME/Session.vim  " Initialize previous session
 call vundle#end()
 filetype plugin indent on
 autocmd VimEnter * winc =  " Equalizes the window sizes
