@@ -110,10 +110,10 @@ else
 endif
 
 " Remove toolbar
-set guioptions-=m  " remove menubar
-set guioptions-=T  " remove toolbar
-set guioptions-=L  " remove left-hand scroll bar
-set guioptions-=r  " remove left-hand scroll bar
+set guioptions-=m  " Remove menubar
+set guioptions-=T  " Remove toolbar
+set guioptions-=L  " Remove left-hand scroll bar
+set guioptions-=r  " Remove left-hand scroll bar
 
 " Color settings
 set t_Co=256
@@ -136,9 +136,7 @@ nnoremap  <CR>                o<Esc>
 nnoremap  <C-z>               "*p
 nnoremap  =                   <C-w>=
 nnoremap  <C-l>               :nohl<CR><C-l>
-nnoremap   <C-s>               :w<CR><C-s>   
-nnoremap  <Leader>yw          call WindowSwap#MarkWindowSwap()<CR>
-nnoremap  <Leader>pw          :call WindowSwap#DoWindowSwap()<CR>
+nnoremap  <C-s>               :w<CR><C-s>   
 
 " All modes
 noremap   <Up>                <NOP> 
@@ -147,7 +145,9 @@ noremap   <Left>              <NOP>
 noremap   <Right>             <NOP>
 noremap   <C-n>               :vnew<CR>
 noremap   <C-N>               :new<CR>
-noremap   <C-a>               ggvG
+noremap   <C-a>               :%y+<CR>
+noremap   <C-q>               :q<CR>
+noremap   <leader>w           <C-W>r
 noremap   <F1>                :NERDTreeToggle /home/guanhao97/Desktop/chem-mystery<CR>              
 noremap   <F2>                :vnew /$HOME/.vimrc<CR>
 noremap   <F3>                :!xmodmap /$HOME/.Xmodmap<CR><CR>
